@@ -1,0 +1,195 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+ <style>
+    /* Navbar umumiy sozlamalari */
+.navbar {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    z-index: 9999;
+}
+
+.navbar-brand {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.navbar-brand:hover {
+    color: #ffffff;
+}
+
+.navbar-nav .nav-link {
+    color: #333;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #007bff; /* Primary rang */
+}
+
+.nav-item.dropdown .dropdown-menu {
+    border-radius: 0.5rem;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.dropdown-item {
+    color: #333;
+    font-size: 14px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.navbar-toggler {
+    border: none;
+    outline: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23333" viewBox="0 0 30 30"%3E%3Cpath stroke="rgba(51, 51, 51, 1)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+}
+
+.sticky-top {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Telefon raqami uslubi */
+h4 {
+    color: #333;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+h4 i {
+    font-size: 18px;
+    margin-right: 10px;
+    color: #007bff;
+}
+
+/* Media queries - responsivlik uchun */
+@media (max-width: 991.98px) {
+    .navbar-brand {
+        padding: 10px;
+    }
+
+    .navbar-nav .nav-link {
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    h4 {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* Dropdown uchun animatsiya */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+ </style>
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5" 
+     style="margin-bottom: 6rem; background-image: url('{% static 'img/your-image.jpg' %}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div class="container py-5">
+        <h1 class="display-3 text-black mb-3 animated slideInDown">Bog'lanish</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="text-black" href="#">UY</a></li>
+                <li class="breadcrumb-item"><a class="text-black" href="#">Mebel Turlari</a></li>
+                <li class="breadcrumb-item text-black active" aria-current="page">Bog'lanish</li>
+            </ol>
+        </nav>
+        
+        </nav>
+    </div>
+</div>
+<!-- Page Header End -->
+
+
+    <!-- Contact Start -->
+    <div class="container-fluid overflow-hidden py-5 px-lg-0">
+        <div class="container contact-page py-5 px-lg-0">
+            <div class="row g-5 mx-lg-0">
+                <div class="col-md-6 contact-form wow fadeIn" data-wow-delay="0.1s">
+                    <h6 class="text-secondary text-uppercase mb-3">Buyurtma</h6>
+                    <h1 class="mb-5">Bepul Konsultatsiya Oling!</h1>
+                    <p class="mb-5">Biz sizning uyingiz uchun mukammal mebelni tanlashda yordam beramiz. Savollaringizga javob beramiz va professional maslahatlar taqdim etamiz.</p>
+                    <div class="bg-light p-4">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control border-0" placeholder="Ismingiz" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="email" class="form-control border-0" placeholder="Email Manzilingiz" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control border-0" placeholder="Telefon Raqamingiz" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <select class="form-select border-0" style="height: 55px;">
+                                        <option selected>Mebel Turini Tanlang</option>
+                                        <option value="1">Yotoq Mebellari</option>
+                                        <option value="2">Oshxona Mebellari</option>
+                                        <option value="3">Ofis Mebellari</option>
+                                        <option value="4">Shkaflar</option>
+                                        <option value="5">Stullar va Jadvallar</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control border-0" placeholder="Maxsus Izohlaringiz"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Yuborish</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6 pe-lg-0 wow fadeInRight" data-wow-delay="0.1s">
+                    <div class="position-relative h-100">
+                        <iframe class="position-absolute w-100 h-100" style="object-fit: cover;"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117857.56811583245!2d66.92652776435357!3d39.65478146012286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f4d193b4e4b8e6d%3A0xddefb8d22ae84aa7!2sSamarkand%2C%20Uzbekistan!5e0!3m2!1sen!2sus!4v1603794290143!5m2!1sen!2sus"
+                        frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0">
+                    </iframe>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+
+    {% endblock content %}

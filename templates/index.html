@@ -1,0 +1,504 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+  <!-- Mebel Reklama Bo'limi -->
+<div class="container-fluid p-0 pb-5">
+    <div class="position-relative mb-5">
+        <img class="img-fluid w-100" src="{% static 'img/carousel-2.png' %}" alt="Zamonaviy Divan">
+        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(6, 3, 21, .5);">
+            <div class="container">
+                <div class="row justify-content-start">
+                    <div class="col-10 col-lg-8">
+                        <h5 class="text-white text-uppercase mb-3 animated fadeIn">Zamonaviy va Qulay</h5>
+                        <h1 class="display-3 text-white animated fadeIn mb-4">Zamonaviy <span class="text-primary">Mebellar Kolleksiyasi</span></h1>
+                        <p class="fs-5 fw-medium text-white mb-4 pb-2">Uy uchun zamonaviy va qulay divanlarimizni kashf eting.</p>
+                       
+                        <a href="" class="btn btn-secondary py-md-3 px-md-5 animated fadeIn">Ko'proq Ma'lumot</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Mebel Reklama Bo'limi End -->
+
+<style>/* Carousel slaydlarining tasvirlarini o'lchamini sozlash */
+    .header-carousel img {
+        height: 500px; /* Slaydlar balandligi */
+        object-fit: cover; /* Tasvirning shaklini saqlash */
+        width: 100%; /* Tasvir kengligi */
+    }
+    
+    /* Carousel matnning aniq ko'rinishini ta'minlash */
+    .header-carousel .animated {
+        animation-duration: 1s; /* Animatsiya davomiyligi */
+    }
+    
+    /* Slayd fonining qorayishini ko'rsatish */
+    .header-carousel .position-absolute {
+        background: rgba(6, 3, 21, 0.6); /* Qoraygan fon */
+    }
+    </style>
+    <script>$(document).ready(function(){
+        $(".owl-carousel").owlCarousel({
+          items: 1, // Slaydlar soni
+          loop: true, // Doimiy aylanish
+          autoplay: true, // Avtomatik tarzda o'tish
+          autoplayTimeout: 5000, // Har 5 soniyada slaydni o'zgartirish
+          autoplayHoverPause: true, // Hoverda pausaga o'tish
+          dots: true, // Dots (nuqtalar) qo'shish
+          nav: true, // Nav (oldinga orqaga) tugmalari
+        });
+      });
+      </script>
+   <!-- About Start -->
+<div class="container-fluid overflow-hidden py-5 px-lg-0">
+    <div class="container about py-5 px-lg-0">
+        <div class="row g-5 mx-lg-0">
+            <div class="col-lg-6 ps-lg-0 wow fadeInLeft" data-wow-delay="0.1s" style="min-height: 400px;">
+                <div class="position-relative h-100">
+                    <img class="position-absolute img-fluid w-100 h-100" src="{% static 'img/about.jpg' %}" style="object-fit: cover;" alt="Mebel Mahsulotlari">
+                </div>
+            </div>
+            <div class="col-lg-6 about-text wow fadeInUp" data-wow-delay="0.3s">
+                <h6 class="text-secondary text-uppercase mb-3">Biz Haqimizda</h6>
+                <h1 class="mb-5">Yotoq, Oshxona, Ofis va Boshqa Mebel Mahsulotlari</h1>
+                <p class="mb-5">Bizning kompaniya yuqori sifatli mebel mahsulotlari ishlab chiqarish va yetkazib berishda yetakchidir. Yotoq mebellari, oshxona jihozlari, ofis mebellari va boshqa turli xil mahsulotlar bilan mijozlarimizni xursand qilmoqdamiz.</p>
+                <div class="row g-4 mb-5">
+                    <div class="col-sm-6 wow fadeIn" data-wow-delay="0.5s">
+                        <i class="fa fa-couch fa-3x text-primary mb-3"></i>
+                        <h5>Yuqori Sifatli Mebel</h5>
+                        <p class="m-0">Bizning mebellarimiz eng yuqori sifatli materiallardan tayyorlanadi va mukammal ishlov beriladi.</p>
+                    </div>
+                    <div class="col-sm-6 wow fadeIn" data-wow-delay="0.7s">
+                        <i class="fa fa-truck fa-3x text-primary mb-3"></i>
+                        <h5>Vaqtida Yetkazib Berish</h5>
+                        <p class="m-0">Biz mijozlarimizga buyurtma qilingan mebellarni belgilangan muddatda yetkazib berish uchun barchani amalga oshiramiz.</p>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary py-3 px-5">Batafsil Ma'lumot</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+
+
+   <!-- Fact Start -->
+<div class="container-xxl py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="text-secondary text-uppercase mb-3">Ba'zi Faktlar</h6>
+                <h1 class="mb-5">#1 Joy Sizning Mebel Ehtiyojlaringiz Uchun</h1>
+                <p class="mb-5">Zamonaviy va sifatli mebellar bilan uyingizga qulaylik qo‘shing. Bizning mahsulotlarimiz estetik dizayn va mustahkamlikni birlashtiradi, uyingizni yanada go'zal va qulay qiladi.</p>
+                <div class="d-flex align-items-center">
+                    <i class="fa fa-couch fa-2x flex-shrink-0 bg-primary p-3 text-white"></i>
+                    <div class="ps-4">
+                        <h6>Har qanday savol uchun qo'ng'iroq qiling!</h6>
+                        <h3 class="text-primary m-0">+998906056566</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row g-4 align-items-center">
+                    <div class="col-sm-6">
+                        <div class="bg-primary p-4 mb-4 wow fadeIn" data-wow-delay="0.3s">
+                            <i class="fa fa-smile fa-2x text-white mb-3"></i>
+                            <h2 class="text-white mb-2" data-toggle="counter-up">1234</h2>
+                            <p class="text-white mb-0">Baxtli Mijozlar</p>
+                        </div>
+                        <div class="bg-secondary p-4 wow fadeIn" data-wow-delay="0.5s">
+                            <i class="fa fa-truck-loading fa-2x text-white mb-3"></i>
+                            <h2 class="text-white mb-2" data-toggle="counter-up">1234</h2>
+                            <p class="text-white mb-0">O'z Vaqtida Yetkazib Berish</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="bg-success p-4 wow fadeIn" data-wow-delay="0.7s">
+                            <i class="fa fa-star fa-2x text-white mb-3"></i>
+                            <h2 class="text-white mb-2" data-toggle="counter-up">1234</h2>
+                            <p class="text-white mb-0">Mijozlarning Fikr-Mulohazalari</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fact End -->
+
+
+<style>
+    /* Xizmatlar bo'limining umumiy stili */
+.container-xxl {
+    background-color: #f9f9f9;
+}
+
+.service-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Rasmga stil berish */
+.service-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.service-item img:hover {
+    transform: scale(1.05);
+}
+
+/* Xizmat sarlavhalarini stilizatsiya qilish */
+.service-item h4 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Xizmat tavsifining stilizatsiyasi */
+.service-item p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* "Batafsil" tugmasining stili */
+.btn-slide {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-slide:hover {
+    color: #0056b3;
+    transform: translateX(5px);
+}
+
+.btn-slide i {
+    margin-right: 8px;
+}
+
+/* Bo'lim sarlavhalari va matni */
+.text-center h6 {
+    font-size: 1rem;
+    color: #6c757d;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.text-center h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #343a40;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+/* Responsive dizayn */
+@media (max-width: 767px) {
+    .service-item {
+        margin-bottom: 20px;
+    }
+
+    .service-item h4 {
+        font-size: 1.1rem;
+    }
+
+    .service-item p {
+        font-size: 0.9rem;
+    }
+
+    .btn-slide {
+        font-size: 0.9rem;
+    }
+}
+
+</style>
+
+<!-- Xizmatlar Boshlanishi -->
+{% for service in services_page %}
+
+<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+    <div class="service-item p-4">
+        <div class="overflow-hidden mb-4">
+            <img class="img-fluid" src="{{ service.image.url }}" alt="{{ service.title }}">
+        </div>
+        <h4 class="mb-3">{{ service.title }}</h4>
+        <p>{{ service.description }}</p>
+
+        <a class="btn-slide mt-2" href="#"><i class="fa fa-arrow-right"></i><span>Ko'proq o'qing</span></a>
+
+    </div>
+</div>
+{% endfor %}
+
+<!-- Xizmatlar Tugashi -->
+
+
+   <!-- Feature Start -->
+<div class="container-fluid overflow-hidden py-5 px-lg-0">
+    <div class="container feature py-5 px-lg-0">
+        <div class="row g-5 mx-lg-0">
+            <div class="col-lg-6 feature-text wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="text-secondary text-uppercase mb-3">Bizning Xizmatlar</h6>
+                <h1 class="mb-5">Ishonchli Mebel Yetkazib Berish Xizmati</h1>
+                <div class="d-flex mb-5 wow fadeInUp" data-wow-delay="0.3s">
+                    <i class="fa fa-couch text-primary fa-3x flex-shrink-0"></i>
+                    <div class="ms-4">
+                        <h5>Zamonaviy Dizayn</h5>
+                        <p class="mb-0">Bizning mebellar zamonaviy dizayn va qulaylikni o‘zida mujassamlashtiradi, sizning uyingizni go‘zal va qulay qiladi.</p>
+                    </div>
+                </div>
+                <div class="d-flex mb-5 wow fadeIn" data-wow-delay="0.5s">
+                    <i class="fa fa-truck text-primary fa-3x flex-shrink-0"></i>
+                    <div class="ms-4">
+                        <h5>O‘z Vaqtida Yetkazib Berish</h5>
+                        <p class="mb-0">Biz sizga mebelingizni o‘z vaqtida va xavfsiz yetkazib berishni kafolatlaymiz.</p>
+                    </div>
+                </div>
+                <div class="d-flex mb-0 wow fadeInUp" data-wow-delay="0.7s">
+                    <i class="fa fa-headphones text-primary fa-3x flex-shrink-0"></i>
+                    <div class="ms-4">
+                        <h5>24/7 Qo'llab-quvvatlash</h5>
+                        <p class="mb-0">Biz har doim siz bilan bog‘lanish uchun tayyormiz. Har qanday savollaringizga javob beramiz.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 pe-lg-0 wow fadeInRight" data-wow-delay="0.1s" style="min-height: 400px;">
+                <div class="position-relative h-100">
+                    <img class="position-absolute img-fluid w-100 h-100" src="{% static 'img/feature.jpg' %}" style="object-fit: cover;" alt="">
+                </div>   
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Feature End -->
+
+
+
+    
+
+
+   <!-- Quote Start -->
+<div class="container-xxl py-5">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="text-secondary text-uppercase mb-3">Buyurtma</h6>
+                <h1 class="mb-5">Bepul Konsultatsiya Oling!</h1>
+                <p class="mb-5">Biz sizning uyingiz uchun mukammal mebelni tanlashda yordam beramiz. Savollaringizga javob beramiz va professional maslahatlar taqdim etamiz.</p>
+                <div class="d-flex align-items-center">
+                    <i class="fa fa-phone fa-2x flex-shrink-0 bg-primary p-3 text-white"></i>
+                    <div class="ps-4">
+                        <h6>Har qanday savol uchun qo'ng'iroq qiling!</h6>
+                        <h3 class="text-primary m-0">+998 90 605 65 66</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="bg-light text-center p-5 wow fadeIn" data-wow-delay="0.5s">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-12 col-sm-6">
+                                <input type="text" class="form-control border-0" placeholder="Ismingiz" style="height: 55px;">
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input type="email" class="form-control border-0" placeholder="Email Manzilingiz" style="height: 55px;">
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input type="text" class="form-control border-0" placeholder="Telefon Raqamingiz" style="height: 55px;">
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <select class="form-select border-0" style="height: 55px;">
+                                    <option selected>Mebel Turini Tanlang</option>
+                                    <option value="1">Yotoq Mebellari</option>
+                                    <option value="2">Oshxona Mebellari</option>
+                                    <option value="3">Ofis Mebellari</option>
+                                    <option value="4">Shkaflar</option>
+                                    <option value="5">Stullar va Jadvallar</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control border-0" placeholder="Maxsus Izohlaringiz"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Yuborish</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Quote End -->
+
+
+    <!-- Team Start -->
+    <div class="container-xxl py-5">
+        <div class="container py-5">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="text-secondary text-uppercase">biz</h6>
+                <h1 class="mb-5">Bizning jamolar</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item p-4">
+                        <div class="overflow-hidden mb-4">
+                            <img class="img-fluid" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTabqK036YDZSLo2ecQpSj7-bV_mYEqdCqrYA&s" alt="">
+                        </div>
+                        <h5 class="mb-0">Registon gold mebel</h5>
+                        <p>Designation</p>
+                        <div class="btn-slide mt-1">
+                            <i class="fa fa-share"></i>
+                            <span>
+                                <a href=""><i class="fab fa-facebook-f"></i></a>
+                                <a href=""><i class="fab fa-twitter"></i></a>
+                                <a href=""><i class="fab fa-instagram"></i></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="team-item p-4">
+                        <div class="overflow-hidden mb-4">
+                            <img class="img-fluid" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTabqK036YDZSLo2ecQpSj7-bV_mYEqdCqrYA&s" alt="">
+                        </div>
+                        <h5 class="mb-0">Registon gold mebel</h5>
+                        <p>Designation</p>
+                        <div class="btn-slide mt-1">
+                            <i class="fa fa-share"></i>
+                            <span>
+                                <a href=""><i class="fab fa-facebook-f"></i></a>
+                                <a href=""><i class="fab fa-twitter"></i></a>
+                                <a href=""><i class="fab fa-instagram"></i></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="team-item p-4">
+                        <div class="overflow-hidden mb-4">
+                            <img class="img-fluid" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTabqK036YDZSLo2ecQpSj7-bV_mYEqdCqrYA&s" alt="">
+                        </div>
+                        <h5 class="mb-0">Registon gold mebel</h5>
+                        <p>Designation</p>
+                        <div class="btn-slide mt-1">
+                            <i class="fa fa-share"></i>
+                            <span>
+                                <a href=""><i class="fab fa-facebook-f"></i></a>
+                                <a href=""><i class="fab fa-twitter"></i></a>
+                                <a href=""><i class="fab fa-instagram"></i></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.9s">
+                    <div class="team-item p-4">
+                        <div class="overflow-hidden mb-4">
+                            <img class="img-fluid" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTabqK036YDZSLo2ecQpSj7-bV_mYEqdCqrYA&s" alt="">
+                        </div>
+                        <h5 class="mb-0">Registon gold mebel</h5>
+                        <p>Designation</p>
+                        <div class="btn-slide mt-1">
+                            <i class="fa fa-share"></i>
+                            <span>
+                                <a href=""><i class="fab fa-facebook-f"></i></a>
+                                <a href=""><i class="fab fa-twitter"></i></a>
+                                <a href=""><i class="fab fa-instagram"></i></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+
+    <!-- Testimonial Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="text-center">
+                <h6 class="text-secondary text-uppercase">Testimonial</h6>
+                <h1 class="mb-0">Our Clients Say!</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                <div class="testimonial-item p-4 my-5">
+                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
+                    <div class="d-flex align-items-end mb-4">
+                        <img class="img-fluid flex-shrink-0" src="{% static 'mg/testimonial-1.jpg' %}" style="width: 80px; height: 80px;">
+                        <div class="ms-4">
+                            <h5 class="mb-1">Client Name</h5>
+                            <p class="m-0">Profession</p>
+                        </div>
+                    </div>
+                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                </div>
+                <div class="testimonial-item p-4 my-5">
+                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
+                    <div class="d-flex align-items-end mb-4">
+                        <img class="img-fluid flex-shrink-0" src="{% static 'img/testimonial-2.jpg' %}" style="width: 80px; height: 80px;">
+                        <div class="ms-4">
+                            <h5 class="mb-1">Client Name</h5>
+                            <p class="m-0">Profession</p>
+                        </div>
+                    </div>
+                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                </div>
+                <div class="testimonial-item p-4 my-5">
+                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
+                    <div class="d-flex align-items-end mb-4">
+                        <img class="img-fluid flex-shrink-0" src="{% static 'img/testimonial-3.jpg' %}" style="width: 80px; height: 80px;">
+                        <div class="ms-4">
+                            <h5 class="mb-1">Client Name</h5>
+                            <p class="m-0">Profession</p>
+                        </div>
+                    </div>
+                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                </div>
+                <div class="testimonial-item p-4 my-5">
+                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
+                    <div class="d-flex align-items-end mb-4">
+                        <img class="img-fluid flex-shrink-0" src="{% static 'img/testimonial-4.jpg' %}" style="width: 80px; height: 80px;">
+                        <div class="ms-4">
+                            <h5 class="mb-1">Client Name</h5>
+                            <p class="m-0">Profession</p>
+                        </div>
+                    </div>
+                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+    {% endblock content %}
+
+  
