@@ -1,18 +1,24 @@
 from django.shortcuts import render
 from django.views import View
 
-from .models import ServiceModel
+from .models import ServiceModel,CategoryModel,Testimonial
 
 class HomeView(View):
     def get(self, request):
         
         services_page = ServiceModel.objects.all() 
+        category_page = CategoryModel.objects.all() 
+        testimonials = Testimonial.objects.all()
         
         context = {
             'services_page': services_page,
+            ' category_page': category_page,
+            'testimonials':testimonials
         }
         
         return render(request, 'index.html', context=context)
+    
+    
     
     
 class AboutView(View):

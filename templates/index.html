@@ -10,17 +10,15 @@
   <!-- Mebel Reklama Bo'limi -->
 <div class="container-fluid p-0 pb-5">
     <div class="position-relative mb-5">
-        <img class="img-fluid w-100" src="{% static 'img/carousel-2.png' %}" alt="Zamonaviy Divan">
-        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(6, 3, 21, .5);">
+        <img class="img-fluid w-100" style="height: 400px; object-fit: cover;" src="{% static 'img/carousel-2.png' %}" alt="Zamonaviy Divan">
+        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(6, 3, 21, 0.7);">
             <div class="container">
                 <div class="row justify-content-start">
-                    <div class="col-10 col-lg-8">
+                    <div class="col-md-10 col-lg-8">
                         <h5 class="text-white text-uppercase mb-3 animated fadeIn">Zamonaviy va Qulay</h5>
                         <h1 class="display-3 text-white animated fadeIn mb-4">Zamonaviy <span class="text-primary">Mebellar Kolleksiyasi</span></h1>
                         <p class="fs-5 fw-medium text-white mb-4 pb-2">Uy uchun zamonaviy va qulay divanlarimizni kashf eting.</p>
-                       
-                        <a href="" class="btn btn-secondary py-md-3 px-md-5 animated fadeIn">Ko'proq Ma'lumot</a>
-                        
+                        <a href="#" class="btn btn-secondary py-md-3 px-md-5 animated fadeIn">Ko'proq Ma'lumot</a>
                     </div>
                 </div>
             </div>
@@ -29,23 +27,28 @@
 </div>
 <!-- Mebel Reklama Bo'limi End -->
 
-<style>/* Carousel slaydlarining tasvirlarini o'lchamini sozlash */
-    .header-carousel img {
-        height: 500px; /* Slaydlar balandligi */
-        object-fit: cover; /* Tasvirning shaklini saqlash */
-        width: 100%; /* Tasvir kengligi */
-    }
+<style>
+/* Tugmachani hover qilish uchun uslub */
+.btn-secondary:hover {
+    background-color: #444; /* Tugmachani quyuqroq qilish */
+    color: #fff; /* Oq matn */
+}
+
+/* Animatsiyalar uchun umumiy uslub */
+.animated {
+    animation-duration: 1s; /* Animatsiya davomiyligi */
+}
+
+/* Tasvirlar uchun maxsus o'lcham */
+.img-fluid {
+    height: auto; /* Moslashuvchan balandlik */
+    max-height: 400px; /* Maksimal balandlik */
+    object-fit: cover; /* Tasvirni kesmasdan ko'rsatish */
+}
+</style>
+
+
     
-    /* Carousel matnning aniq ko'rinishini ta'minlash */
-    .header-carousel .animated {
-        animation-duration: 1s; /* Animatsiya davomiyligi */
-    }
-    
-    /* Slayd fonining qorayishini ko'rsatish */
-    .header-carousel .position-absolute {
-        background: rgba(6, 3, 21, 0.6); /* Qoraygan fon */
-    }
-    </style>
     <script>$(document).ready(function(){
         $(".owl-carousel").owlCarousel({
           items: 1, // Slaydlar soni
@@ -242,23 +245,63 @@
 </style>
 
 <!-- Xizmatlar Boshlanishi -->
-{% for service in services_page %}
-
-<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-    <div class="service-item p-4">
-        <div class="overflow-hidden mb-4">
-            <img class="img-fluid" src="{{ service.image.url }}" alt="{{ service.title }}">
+<div class="container-xxl py-5">
+    <div class="container py-5">
+        <div class="text-center">
+            <h6 class="text-secondary text-uppercase">Bizning Xizmatlarimiz</h6>
+            <h1 class="mb-5">Mebel Xizmatlarimizni Kashf Etish</h1>
         </div>
-        <h4 class="mb-3">{{ service.title }}</h4>
-        <p>{{ service.description }}</p>
+        <div class="row g-4">
 
-        <a class="btn-slide mt-2" href="#"><i class="fa fa-arrow-right"></i><span>Ko'proq o'qing</span></a>
+            {% for service in services_page %}
 
+            <div class="col-md-6 col-lg-4">
+                <div class="service-item p-4">
+                    <div class="overflow-hidden mb-4">
+                        <!-- Rasmlarga onclick hodisasi qo'shish -->
+                        <img 
+                            class="img-fluid" 
+                            src="{{ service.image.url }}" 
+                            alt="{{ service.title }}" 
+                            style="width: 100px; cursor: pointer;" 
+                            onclick="openImageModal('{{ service.image.url }}')">
+                    </div>
+                    <h4 class="mb-3">{{ service.title }}</h4>
+                    <p>{{ service.description }}</p>
+                    <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Ko'proq o'qing</span></a>
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </div>
     </div>
 </div>
-{% endfor %}
-
 <!-- Xizmatlar Tugashi -->
+
+<!-- Modal qismi -->
+<div id="imageModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 1050; justify-content: center; align-items: center;">
+    <span onclick="closeImageModal()" style="position: absolute; top: 20px; right: 40px; font-size: 30px; color: white; cursor: pointer;">&times;</span>
+    <img id="modalImage" src="" alt="Katta Rasm" style="max-width: 90%; max-height: 90%; border-radius: 10px;">
+</div>
+
+<!-- JavaScript -->
+<script>
+    function openImageModal(imageUrl) {
+        // Modalni ko'rsatish
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        modalImage.src = imageUrl;
+        modal.style.display = 'flex';
+    }
+
+    function closeImageModal() {
+        // Modalni yopish
+        const modal = document.getElementById('imageModal');
+        modal.style.display = 'none';
+    }
+</script>
+
 
 
    <!-- Feature Start -->
@@ -440,64 +483,32 @@
         </div>
     </div>
     <!-- Team End -->
-
-
-    <!-- Testimonial Start -->
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="text-center">
-                <h6 class="text-secondary text-uppercase">Testimonial</h6>
-                <h1 class="mb-0">Our Clients Say!</h1>
+<!-- Testimonial Start -->
+<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="text-center">
+            <h6 class="text-secondary text-uppercase">Testimonial</h6>
+            <h1 class="mb-0">Our Clients Say!</h1>
+        </div>
+        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+            {% for testimonial in testimonials %}
+            <div class="testimonial-item p-4 my-5">
+                <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
+                <div class="d-flex align-items-end mb-4">
+                    <img class="img-fluid flex-shrink-0" src="{{ testimonial.image.url }}" style="width: 80px; height: 80px;">
+                    <div class="ms-4">
+                        <h5 class="mb-1">{{ testimonial.client_name }}</h5>
+                        <p class="m-0">{{ testimonial.profession }}</p>
+                    </div>
+                </div>
+                <p class="mb-0">{{ testimonial.feedback }}</p>
             </div>
-            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                <div class="testimonial-item p-4 my-5">
-                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
-                    <div class="d-flex align-items-end mb-4">
-                        <img class="img-fluid flex-shrink-0" src="{% static 'mg/testimonial-1.jpg' %}" style="width: 80px; height: 80px;">
-                        <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <p class="m-0">Profession</p>
-                        </div>
-                    </div>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
-                <div class="testimonial-item p-4 my-5">
-                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
-                    <div class="d-flex align-items-end mb-4">
-                        <img class="img-fluid flex-shrink-0" src="{% static 'img/testimonial-2.jpg' %}" style="width: 80px; height: 80px;">
-                        <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <p class="m-0">Profession</p>
-                        </div>
-                    </div>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
-                <div class="testimonial-item p-4 my-5">
-                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
-                    <div class="d-flex align-items-end mb-4">
-                        <img class="img-fluid flex-shrink-0" src="{% static 'img/testimonial-3.jpg' %}" style="width: 80px; height: 80px;">
-                        <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <p class="m-0">Profession</p>
-                        </div>
-                    </div>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
-                <div class="testimonial-item p-4 my-5">
-                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
-                    <div class="d-flex align-items-end mb-4">
-                        <img class="img-fluid flex-shrink-0" src="{% static 'img/testimonial-4.jpg' %}" style="width: 80px; height: 80px;">
-                        <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <p class="m-0">Profession</p>
-                        </div>
-                    </div>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
-    <!-- Testimonial End -->
+</div>
+<!-- Testimonial End -->
+
 
     {% endblock content %}
 
