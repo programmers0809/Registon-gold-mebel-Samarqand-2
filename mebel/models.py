@@ -29,11 +29,45 @@ class ServiceModel(models.Model):
         verbose_name = 'Servis'
         verbose_name_plural = 'Servislar'
 
+
 class Testimonial(models.Model):
-    client_name = models.CharField(max_length=100)
-    profession = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='testimonials/')  # Ensure MEDIA settings are configured
-    feedback = models.TextField()
+    client_name = models.CharField(max_length=100, verbose_name='Mijoz ismi')
+    profession = models.CharField(max_length=100, verbose_name='Kasbi')
+    image = models.ImageField(upload_to='testimonials/', verbose_name='Rasmi')  # MEDIA settings kerak
+    feedback = models.TextField(verbose_name='Fikr-mulohaza')
 
     def __str__(self):
         return self.client_name
+
+    class Meta:
+        db_table = 'izoxlar'
+        managed = True
+        verbose_name = 'Izoh'
+        verbose_name_plural = 'Izohlar'
+
+
+class ContactModel(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Ismingiz")
+    email = models.EmailField(verbose_name="Email Manzilingiz")
+    phone = models.CharField(max_length=15, verbose_name="Telefon Raqamingiz")
+    furniture_type = models.CharField(
+        max_length=50,
+        choices=[
+            ("1", "Yotoq Mebellari"),
+            ("2", "Oshxona Mebellari"),
+            ("3", "Ofis Mebellari"),
+            ("4", "Shkaflar"),
+            ("5", "Stullar va Jadvallar"),
+        ],
+        verbose_name="Mebel Turi",
+    )
+    message = models.TextField(blank=True, verbose_name="Maxsus Izohlaringiz")
+
+    def __str__(self):
+        return f"{self.name} - {self.email}"
+
+    class Meta:
+        db_table = 'aloqa'
+        managed = True
+        verbose_name = 'Aloqa'
+        verbose_name_plural = 'Aloqalar'

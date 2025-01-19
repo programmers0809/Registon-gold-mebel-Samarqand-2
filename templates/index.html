@@ -18,7 +18,7 @@
                         <h5 class="text-white text-uppercase mb-3 animated fadeIn">Zamonaviy va Qulay</h5>
                         <h1 class="display-3 text-white animated fadeIn mb-4">Zamonaviy <span class="text-primary">Mebellar Kolleksiyasi</span></h1>
                         <p class="fs-5 fw-medium text-white mb-4 pb-2">Uy uchun zamonaviy va qulay divanlarimizni kashf eting.</p>
-                        <a href="#" class="btn btn-secondary py-md-3 px-md-5 animated fadeIn">Ko'proq Ma'lumot</a>
+                        <a href="https://taplink.cc/registon_gold?fbclid=PAZXh0bgNhZW0CMTEAAaYsI46QA8NoRYBhb2bfKI-aAwZXDLUOWmiVlCcH5LUXCmUdj_ippRhLjpo_aem_sfqACKzILvidsPZzn_LJ3Q" class="btn btn-secondary py-md-3 px-md-5 animated fadeIn">Ko'proq Ma'lumot</a>
                     </div>
                 </div>
             </div>
@@ -86,7 +86,7 @@
                         <p class="m-0">Biz mijozlarimizga buyurtma qilingan mebellarni belgilangan muddatda yetkazib berish uchun barchani amalga oshiramiz.</p>
                     </div>
                 </div>
-                <a href="#" class="btn btn-primary py-3 px-5">Batafsil Ma'lumot</a>
+                <a href="https://taplink.cc/registon_gold?fbclid=PAZXh0bgNhZW0CMTEAAaYsI46QA8NoRYBhb2bfKI-aAwZXDLUOWmiVlCcH5LUXCmUdj_ippRhLjpo_aem_sfqACKzILvidsPZzn_LJ3Q" class="btn btn-primary py-3 px-5">Batafsil Ma'lumot</a>
             </div>
         </div>
     </div>
@@ -366,35 +366,86 @@
             </div>
             <div class="col-lg-7">
                 <div class="bg-light text-center p-5 wow fadeIn" data-wow-delay="0.5s">
-                    <form>
-                        <div class="row g-3">
-                            <div class="col-12 col-sm-6">
-                                <input type="text" class="form-control border-0" placeholder="Ismingiz" style="height: 55px;">
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <input type="email" class="form-control border-0" placeholder="Email Manzilingiz" style="height: 55px;">
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <input type="text" class="form-control border-0" placeholder="Telefon Raqamingiz" style="height: 55px;">
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <select class="form-select border-0" style="height: 55px;">
-                                    <option selected>Mebel Turini Tanlang</option>
-                                    <option value="1">Yotoq Mebellari</option>
-                                    <option value="2">Oshxona Mebellari</option>
-                                    <option value="3">Ofis Mebellari</option>
-                                    <option value="4">Shkaflar</option>
-                                    <option value="5">Stullar va Jadvallar</option>
-                                </select>
-                            </div>
-                            <div class="col-12">
-                                <textarea class="form-control border-0" placeholder="Maxsus Izohlaringiz"></textarea>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Yuborish</button>
-                            </div>
-                        </div>
-                    </form>
+  <!-- index.html -->
+<form method="post">
+    {% csrf_token %}
+
+    {{ inquiry_form.as_p }}
+    <button type="submit" class="btn btn-primary">Yuborish</button>
+</form>
+<style>
+   
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+    }
+
+    form {
+        max-width: 600px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form p {
+        margin-bottom: 15px;
+    }
+
+    form label {
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    form input,
+    form textarea,
+    form select {
+        width: 100%;
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    form input:focus,
+    form textarea:focus,
+    form select:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+        outline: none;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px 20px;
+        background: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    button:hover {
+        background: #0056b3;
+    }
+</style>
+
+
+
+
+
+
                 </div>
             </div>
         </div>
@@ -502,6 +553,8 @@
                     </div>
                 </div>
                 <p class="mb-0">{{ testimonial.feedback }}</p>
+                <!-- Tugma qo'shish -->
+                <a href="/testimonial/{{ testimonial.id }}" class="btn btn-secondary mt-3">Read More</a>
             </div>
             {% endfor %}
         </div>
@@ -509,6 +562,10 @@
 </div>
 <!-- Testimonial End -->
 
+ <!-- commment  -->
+
+ 
+<!-- comment  -->
 
     {% endblock content %}
 
