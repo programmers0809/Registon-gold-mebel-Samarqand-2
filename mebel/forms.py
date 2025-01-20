@@ -1,5 +1,5 @@
 from django import forms
-from .models import ContactModel
+from .models import ContactModel,Testimonial
 
 class ContactModelForm(forms.ModelForm):
     class Meta:
@@ -30,4 +30,16 @@ class ContactModelForm(forms.ModelForm):
                 'placeholder': 'Maxsus Izohlaringiz',
                 'rows': 4,
             }),
+        }
+
+
+
+class TestimonialForm(forms.ModelForm):
+    class Meta:
+        model = Testimonial
+        fields = ['client_name', 'profession', 'image', 'feedback']
+        widgets = {
+            'client_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Mijoz ismini kiriting'}),
+            'profession': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Kasbini kiriting'}),
+            'feedback': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Fikr-mulohaza yozing'}),
         }
