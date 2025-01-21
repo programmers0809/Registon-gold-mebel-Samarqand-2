@@ -88,11 +88,13 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Mebel Turlari</a>
                 <div class="dropdown-menu fade-up m-0 shadow-sm">
-                    <a href="{% url 'category_page' %}" class="dropdown-item">Yotoq Mebellari</a>
-                    <a href="{% url 'category_page' %}" class="dropdown-item">Oshxona Mebellari</a>
-                    <a href="{% url 'category_page' %}" class="dropdown-item">Ofis Mebellari</a>
-                    <a href="{% url 'category_page' %}" class="dropdown-item">Yumshoq bollar Mebel</a>
-             
+                
+                    {% for category in category_page %}
+                 
+                    <a href="#" class="dropdown-item">{{category.name}}</a>
+
+                    {% endfor %}
+
                 </div>
             </div>
             <a href="{% url "contact_page" %}" class="nav-item nav-link">Bog'lanish</a>
@@ -128,12 +130,13 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <h4 class="text-light mb-4">Zamonaviy UY</h4>
-                 <a class="btn btn-link" href="{% url 'category_page' %}">Oshxona Mebellari</a>
+                 <a class="btn btn-link" href="{% url 'category_detail' %}">Oshxona Mebellari</a>
          
                 <a class="btn btn-link" href="">dizayin bilan haama </a>
-                <a class="btn btn-link" href="{% url 'category_page' %}">Yumshoq Mebel</a>
-                <a class="btn btn-link" href="{% url 'category_page' %}">Ofis Mebellari</a>
-                <a class="btn btn-link" href="{% url 'category_page' %}">bollar karavotlari</a>
+                <a class="btn btn-link" href="#">Yumshoq Mebel</a>
+                <a class="btn btn-link" href="#">Ofis Mebellari</a>
+                <a class="btn btn-link" href="#">bollar karavotlari</a>
+
                
             </div>
             
@@ -142,6 +145,8 @@
                 <a class="btn btn-link" href="{% url 'about_page' %}">Biz Haqimizda</a>
                 <a class="btn btn-link" href="{% url "contact_page" %}">Bog‘lanish</a>
                 <a class="btn btn-link" href="{% url "service_page" %}">Xizmatlarimiz</a>
+                <a class="btn btn-link" href="{% url "home_page" %}">Uy</a>
+                <a class="btn btn-link" href="{% url "contact_page" %}">Aloqa</a>
             </div>
             
             <div class="col-lg-3 col-md-6">

@@ -241,6 +241,28 @@
         font-size: 0.9rem;
     }
 }
+/* Rating Section */
+.rating {
+    display: flex;
+    align-items: center;
+}
+
+.rating .star {
+    font-size: 1.5rem;
+    color: #FFD700; /* Gold color for stars */
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.rating .star:hover {
+    color: #FFA500; /* Darker gold when hovered */
+}
+
+.rating-text {
+    font-size: 0.9rem;
+    margin-left: 10px;
+    color: #666666;
+}
 
 </style>
 
@@ -256,19 +278,29 @@
             {% for service in services_page %}
 
             <div class="col-md-6 col-lg-4">
-                <div class="service-item p-4">
+                <div class="service-item p-4 shadow-sm rounded">
                     <div class="overflow-hidden mb-4">
-                        <!-- Rasmlarga onclick hodisasi qo'shish -->
                         <img 
-                            class="img-fluid" 
+                            class="img-fluid rounded" 
                             src="{{ service.image.url }}" 
                             alt="{{ service.title }}" 
-                            style="width: 100px; cursor: pointer;" 
+                            style="cursor: pointer;" 
                             onclick="openImageModal('{{ service.image.url }}')">
                     </div>
-                    <h4 class="mb-3">{{ service.title }}</h4>
+                    <h4 class="mb-3 text-primary">{{ service.title }}</h4>
                     <p>{{ service.description }}</p>
-                    <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Ko'proq o'qing</span></a>
+                    
+                    <!-- Rating Section -->
+                    <div class="rating mb-3">
+                        <span class="star" data-value="5">&#9733;</span>
+                        <span class="star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="3">&#9733;</span>
+                        <span class="star" data-value="2">&#9733;</span>
+                        <span class="star" data-value="1">&#9733;</span>
+                        <span class="rating-text">(4.5 O'rtacha Reyting)</span>
+                    </div>
+
+                    <a class="btn btn-outline-primary btn-sm mt-2" href=""><i class="fa fa-arrow-right"></i> Ko'proq o'qing</a>
                 </div>
             </div>
 
@@ -277,7 +309,67 @@
         </div>
     </div>
 </div>
-<!-- Xizmatlar Tugashi -->
+
+<!-- Modal for Images -->
+<div id="imageModal" class="modal" tabindex="-1" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Rasmni Ko'rish</h5>
+                <button type="button" class="btn-close" onclick="closeImageModal()"></button>
+            </div>
+            <div class="modal-body">
+                <img id="modalImage" class="img-fluid w-100 rounded" src="" alt="Image">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript for Modal and Rating -->
+<script>
+    function openImageModal(imageUrl) {
+        document.getElementById('modalImage').src = imageUrl;
+        document.getElementById('imageModal').style.display = 'block';
+    }
+
+    function closeImageModal() {
+        document.getElementById('imageModal').style.display = 'none';
+        document.getElementById('modalImage').src = '';
+    }
+
+    // Star Rating Hover and Click Effects
+    document.querySelectorAll('.rating .star').forEach(function(star) {
+        star.addEventListener('mouseover', function() {
+            highlightStars(this.dataset.value);
+        });
+
+        star.addEventListener('mouseout', function() {
+            resetStars();
+        });
+
+        star.addEventListener('click', function() {
+            setRating(this.dataset.value);
+        });
+    });
+
+    function highlightStars(rating) {
+        document.querySelectorAll('.rating .star').forEach(function(star) {
+            star.style.color = star.dataset.value <= rating ? '#FFD700' : '#CCCCCC';
+        });
+    }
+
+    function resetStars() {
+        document.querySelectorAll('.rating .star').forEach(function(star) {
+            star.style.color = '#FFD700';
+        });
+    }
+
+    function setRating(rating) {
+        console.log('Selected Rating:', rating);
+        // You can add functionality here to send the rating to the server
+    }
+</script>
+
 
 <!-- Modal qismi -->
 <div id="imageModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 1050; justify-content: center; align-items: center;">
@@ -538,8 +630,8 @@
 <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="container py-5">
         <div class="text-center">
-            <h6 class="text-secondary text-uppercase">Testimonial</h6>
-            <h1 class="mb-0">Our Clients Say!</h1>
+            <h6 class="text-secondary text-uppercase">Mijozlar</h6>
+            <h1 class="mb-0">Mijozlar izoxi</h1>
         </div>
         <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
             {% for testimonial in testimonials %}
@@ -554,7 +646,7 @@
                 </div>
                 <p class="mb-0">{{ testimonial.feedback }}</p>
                 <!-- Tugma qo'shish -->
-                <a href="/testimonial/{{ testimonial.id }}" class="btn btn-secondary mt-3">Read More</a>
+                <a href="{% url 'category_detail' %}" class="btn btn-secondary mt-3">izox yozish</a>
             </div>
             {% endfor %}
         </div>

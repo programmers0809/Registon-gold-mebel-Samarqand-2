@@ -146,34 +146,62 @@ h4 i {
                     <h1 class="mb-5">Bepul Konsultatsiya Oling!</h1>
                     <p class="mb-5">Biz sizning uyingiz uchun mukammal mebelni tanlashda yordam beramiz. Savollaringizga javob beramiz va professional maslahatlar taqdim etamiz.</p>
                     <div class="bg-light p-4">
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Ismingiz" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control border-0" placeholder="Email Manzilingiz" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Telefon Raqamingiz" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <select class="form-select border-0" style="height: 55px;">
-                                        <option selected>Mebel Turini Tanlang</option>
-                                        <option value="1">Yotoq Mebellari</option>
-                                        <option value="2">Oshxona Mebellari</option>
-                                        <option value="3">Ofis Mebellari</option>
-                                        <option value="4">Shkaflar</option>
-                                        <option value="5">Stullar va Jadvallar</option>
-                                    </select>
-                                </div>
-                                <div class="col-12">
-                                    <textarea class="form-control border-0" placeholder="Maxsus Izohlaringiz"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Yuborish</button>
-                                </div>
-                            </div>
+                        <style>
+                            /* Form uchun umumiy o'lchamlar */
+form {
+    margin-top: 20px;
+}
+
+/* Input va select uchun umumiy uslublar */
+form .form-control,
+form .form-select {
+    border-radius: 5px; /* Dumaloqlangan burchaklar */
+    border: 1px solid #ddd; /* Nozik chegaralar */
+    padding: 10px 15px; /* Ichki bo'shliq */
+    font-size: 16px; /* Matn hajmi */
+    transition: all 0.3s ease; /* Fokus effekti uchun o'tish */
+}
+
+/* Fokuslangan holatda (hover yoki focus) */
+form .form-control:focus,
+form .form-select:focus {
+    border-color: #007bff; /* Chegarani ko'k rangga o'zgartirish */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Yorqin ko'rinish */
+    outline: none; /* Fokus chizig'ini olib tashlash */
+}
+
+/* Matn maydoni uchun qo'shimcha uslublar */
+form textarea.form-control {
+    resize: none; /* Hajmini foydalanuvchi o'zgartira olmaydi */
+}
+
+/* Tugma uchun uslublar */
+form button {
+    background-color: #007bff; /* Tugma uchun asosiy rang */
+    color: #fff; /* Matn oq rangda */
+    border: none; /* Chegaralarni olib tashlash */
+    font-size: 18px; /* Matn hajmi */
+    border-radius: 5px; /* Dumaloqlik */
+    cursor: pointer; /* Tugma ustida ko'rsatkich ko'rsatkichi */
+    transition: all 0.3s ease; /* Hover effekti */
+}
+
+form button:hover {
+    background-color: #0056b3; /* Hoverda tugma uchun quyuqroq rang */
+}
+
+/* Xatolik maydoni uchun (validatsiya natijalari) */
+form .error {
+    color: red; /* Xato matn qizil rangda */
+    font-size: 14px; /* Kichikroq matn */
+    margin-top: 5px;
+}
+
+                        </style>
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-primary mt-3 w-100" style="height: 55px;">Yuborish</button>
                         </form>
                     </div>
                 </div>

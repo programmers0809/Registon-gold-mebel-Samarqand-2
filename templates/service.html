@@ -7,7 +7,11 @@
 {% block content %}
 
 <!-- Page Header Start -->
-<div class="container-fluid page-header py-5" style="margin-bottom: 6rem; background-image: url('img/carousel-2.png'); background-size: cover; background-position: center;">
+<div class="container-fluid page-header py-5" 
+     style="margin-bottom: 6rem; 
+            background-image: url({% static 'img/carousel-2.png' %}); 
+            background-size: cover; 
+            background-position: center;">
     <div class="container py-5">
         <h1 class="display-3 text-white mb-3 animated slideInDown">Xizmatlar</h1>
         <nav aria-label="breadcrumb animated slideInDown">
@@ -20,8 +24,131 @@
     </div>
 </div>
 <!-- Page Header End -->
+<style>
+    /* Xizmatlar bo'limining umumiy stili */
+.container-xxl {
+    background-color: #f9f9f9;
+}
 
+.service-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Rasmga stil berish */
+.service-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.service-item img:hover {
+    transform: scale(1.05);
+}
+
+/* Xizmat sarlavhalarini stilizatsiya qilish */
+.service-item h4 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Xizmat tavsifining stilizatsiyasi */
+.service-item p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* "Batafsil" tugmasining stili */
+.btn-slide {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-slide:hover {
+    color: #0056b3;
+    transform: translateX(5px);
+}
+
+.btn-slide i {
+    margin-right: 8px;
+}
+
+/* Bo'lim sarlavhalari va matni */
+.text-center h6 {
+    font-size: 1rem;
+    color: #6c757d;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.text-center h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #343a40;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+/* Responsive dizayn */
+@media (max-width: 767px) {
+    .service-item {
+        margin-bottom: 20px;
+    }
+
+    .service-item h4 {
+        font-size: 1.1rem;
+    }
+
+    .service-item p {
+        font-size: 0.9rem;
+    }
+
+    .btn-slide {
+        font-size: 0.9rem;
+    }
+}
+/* Rating Section */
+.rating {
+    display: flex;
+    align-items: center;
+}
+
+.rating .star {
+    font-size: 1.5rem;
+    color: #FFD700; /* Gold color for stars */
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.rating .star:hover {
+    color: #FFA500; /* Darker gold when hovered */
+}
+
+.rating-text {
+    font-size: 0.9rem;
+    margin-left: 10px;
+    color: #666666;
+}
+
+</style>
 
 <!-- Xizmatlar Boshlanishi -->
 <div class="container-xxl py-5">
@@ -35,19 +162,29 @@
             {% for service in services_page %}
 
             <div class="col-md-6 col-lg-4">
-                <div class="service-item p-4">
+                <div class="service-item p-4 shadow-sm rounded">
                     <div class="overflow-hidden mb-4">
-                        <!-- Rasmlarga onclick hodisasi qo'shish -->
                         <img 
-                            class="img-fluid" 
+                            class="img-fluid rounded" 
                             src="{{ service.image.url }}" 
                             alt="{{ service.title }}" 
-                            style="width: 100px; cursor: pointer;" 
+                            style="cursor: pointer;" 
                             onclick="openImageModal('{{ service.image.url }}')">
                     </div>
-                    <h4 class="mb-3">{{ service.title }}</h4>
+                    <h4 class="mb-3 text-primary">{{ service.title }}</h4>
                     <p>{{ service.description }}</p>
-                    <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Ko'proq o'qing</span></a>
+                    
+                    <!-- Rating Section -->
+                    <div class="rating mb-3">
+                        <span class="star" data-value="5">&#9733;</span>
+                        <span class="star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="3">&#9733;</span>
+                        <span class="star" data-value="2">&#9733;</span>
+                        <span class="star" data-value="1">&#9733;</span>
+                        <span class="rating-text">(4.5 O'rtacha Reyting)</span>
+                    </div>
+
+                    <a class="btn btn-outline-primary btn-sm mt-2" href=""><i class="fa fa-arrow-right"></i> Ko'proq o'qing</a>
                 </div>
             </div>
 
@@ -56,7 +193,67 @@
         </div>
     </div>
 </div>
-<!-- Xizmatlar Tugashi -->
+
+<!-- Modal for Images -->
+<div id="imageModal" class="modal" tabindex="-1" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Rasmni Ko'rish</h5>
+                <button type="button" class="btn-close" onclick="closeImageModal()"></button>
+            </div>
+            <div class="modal-body">
+                <img id="modalImage" class="img-fluid w-100 rounded" src="" alt="Image">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript for Modal and Rating -->
+<script>
+    function openImageModal(imageUrl) {
+        document.getElementById('modalImage').src = imageUrl;
+        document.getElementById('imageModal').style.display = 'block';
+    }
+
+    function closeImageModal() {
+        document.getElementById('imageModal').style.display = 'none';
+        document.getElementById('modalImage').src = '';
+    }
+
+    // Star Rating Hover and Click Effects
+    document.querySelectorAll('.rating .star').forEach(function(star) {
+        star.addEventListener('mouseover', function() {
+            highlightStars(this.dataset.value);
+        });
+
+        star.addEventListener('mouseout', function() {
+            resetStars();
+        });
+
+        star.addEventListener('click', function() {
+            setRating(this.dataset.value);
+        });
+    });
+
+    function highlightStars(rating) {
+        document.querySelectorAll('.rating .star').forEach(function(star) {
+            star.style.color = star.dataset.value <= rating ? '#FFD700' : '#CCCCCC';
+        });
+    }
+
+    function resetStars() {
+        document.querySelectorAll('.rating .star').forEach(function(star) {
+            star.style.color = '#FFD700';
+        });
+    }
+
+    function setRating(rating) {
+        console.log('Selected Rating:', rating);
+        // You can add functionality here to send the rating to the server
+    }
+</script>
+
 
 <!-- Modal qismi -->
 <div id="imageModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 1050; justify-content: center; align-items: center;">
@@ -83,7 +280,8 @@
 
 
 
- <!-- Testimonial Start -->
+
+<!-- Testimonial Start -->
 <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="container py-5">
         <div class="text-center">
@@ -102,7 +300,8 @@
                     </div>
                 </div>
                 <p class="mb-0">{{ testimonial.feedback }}</p>
-            </div>
+                <!-- Tugma qo'shish -->
+                <a href="{% url 'category_detail' %}" class="btn btn-secondary mt-3">izox yozish</a>       </div>
             {% endfor %}
         </div>
     </div>
