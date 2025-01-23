@@ -71,3 +71,21 @@ class ContactModel(models.Model):
         managed = True
         verbose_name = 'Aloqa'
         verbose_name_plural = 'Aloqalar'
+
+
+class TeamMemberModel(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Ism")
+    designation = models.CharField(max_length=100, verbose_name="Lavozim")
+    image = models.ImageField(upload_to='team/', verbose_name="Rasm")
+    facebook_url = models.URLField(max_length=200, blank=True, null=True, verbose_name="Facebook havola")
+    twitter_url = models.URLField(max_length=200, blank=True, null=True, verbose_name="Twitter havola")
+    instagram_url = models.URLField(max_length=200, blank=True, null=True, verbose_name="Instagram havola")
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        db_table = 'Jamolar'
+        managed = True
+        verbose_name = 'Team'
+        verbose_name_plural = 'Teams'

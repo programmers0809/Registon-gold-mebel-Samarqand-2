@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from django.shortcuts import render, redirect
-from .models import ServiceModel, CategoryModel, Testimonial, ContactModel
-
+from .models import ServiceModel, CategoryModel, Testimonial, TeamMemberModel
 from .forms import ContactModelForm, TestimonialForm
 
 class HomeView(View):
@@ -11,15 +10,15 @@ class HomeView(View):
         services_page = ServiceModel.objects.all()
         category_page = CategoryModel.objects.all()
         testimonials = Testimonial.objects.all()
-
-        # FurnitureInquiryForm uchun bo‘sh forma
         inquiry_form = ContactModelForm()
+        team_page = TeamMemberModel.objects.all()
 
         context = {
             'services_page': services_page,
             'category_page': category_page,
             'testimonials': testimonials,
             'inquiry_form': inquiry_form,
+            'team_page': team_page,
         }
         return render(request, 'index.html', context=context)
 
@@ -101,3 +100,7 @@ class CategoryDetailView(View):
             return redirect('category_detail')  
         testimonials = Testimonial.objects.all()
         return render(request, 'category_detail.html', {'testimonials': testimonials, 'form': form})
+    
+    
+    
+    

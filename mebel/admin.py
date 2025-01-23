@@ -1,8 +1,6 @@
 from django.contrib import admin
 
-from .models import ServiceModel, CategoryModel,Testimonial,ContactModel
-
-@admin.register(ServiceModel)
+from .models import ServiceModel, CategoryModel, Testimonial, ContactModel, TeamMemberModel
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'image', 'category')  # 'category' maydoni qo'shildi
     search_fields = ('title',)  
@@ -29,3 +27,8 @@ class FurnitureInquiryAdmin(admin.ModelAdmin):
     list_filter = ('furniture_type',)  # Mebel turlariga ko‘ra filtr
     search_fields = ('name', 'email', 'phone', 'message')  # Qidiruv
     ordering = ('-id',)  # Yangi qo‘shilganlar yuqorida ko‘rinadi
+
+
+@admin.register(TeamMemberModel)
+class TeamMemberAdmin(admin.ModelAdmin):
+    list_display = ('name', 'designation')
