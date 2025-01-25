@@ -102,3 +102,11 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name  # Model obyekti uchun nom qaytaradi
+    
+
+
+    class Meta:
+        db_table = 'Maxsulot'  # Table name in the database
+        managed = True  # Allows Django to manage the table (migrations)
+        verbose_name = 'Team Member'  # Singular form for one member
+        verbose_name_plural = 'Bizning Jamolar'  # Plural form for all team members
