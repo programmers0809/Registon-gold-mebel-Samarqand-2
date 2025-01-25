@@ -83,9 +83,22 @@ class TeamMemberModel(models.Model):
 
     def __str__(self):
         return self.name
-    
+      
     class Meta:
-        db_table = 'Jamolar'
-        managed = True
-        verbose_name = 'Team'
-        verbose_name_plural = 'Teams'
+        db_table = 'Jamolar'  # Table name in the database
+        managed = True  # Allows Django to manage the table (migrations)
+        verbose_name = 'Team Member'  # Singular form for one member
+        verbose_name_plural = 'Bizning Jamolar'  # Plural form for all team members
+
+
+
+class Product(models.Model):
+    name = models.CharField(max_length=100)  # Mahsulot nomi
+    price = models.DecimalField(max_digits=10, decimal_places=2)  # Narxi
+    description = models.TextField(blank=True, null=True)  # Tavsifi
+    created_at = models.DateTimeField(auto_now_add=True)  # Yaratilgan vaqt
+    updated_at = models.DateTimeField(auto_now=True)  # Yangilangan vaqt
+    video = models.FileField(upload_to='videos/', blank=True, null=True)  # Video fayli
+
+    def __str__(self):
+        return self.name  # Model obyekti uchun nom qaytaradi

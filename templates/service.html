@@ -184,7 +184,7 @@
                         <span class="rating-text">(4.5 O'rtacha Reyting)</span>
                     </div>
 
-                    <a class="btn btn-outline-primary btn-sm mt-2" href=""><i class="fa fa-arrow-right"></i> Ko'proq o'qing</a>
+                    <a class="btn btn-outline-primary btn-sm mt-2" href="https://taplink.cc/registon_gold?fbclid=PAZXh0bgNhZW0CMTEAAaYsI46QA8NoRYBhb2bfKI-aAwZXDLUOWmiVlCcH5LUXCmUdj_ippRhLjpo_aem_sfqACKzILvidsPZzn_LJ3Q" class="btn btn-secondary py-md-3 px-md-5 animated fadeIn"><i class="fa fa-arrow-right"></i> Ko'proq o'qing</a>
                 </div>
             </div>
 
@@ -277,36 +277,202 @@
         modal.style.display = 'none';
     }
 </script>
-
-
-
-
-<!-- Testimonial Start -->
-<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-    <div class="container py-5">
-        <div class="text-center">
-            <h6 class="text-secondary text-uppercase">Testimonial</h6>
-            <h1 class="mb-0">Our Clients Say!</h1>
-        </div>
-        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-            {% for testimonial in testimonials %}
-            <div class="testimonial-item p-4 my-5">
-                <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
-                <div class="d-flex align-items-end mb-4">
-                    <img class="img-fluid flex-shrink-0" src="{{ testimonial.image.url }}" style="width: 80px; height: 80px;">
-                    <div class="ms-4">
-                        <h5 class="mb-1">{{ testimonial.client_name }}</h5>
-                        <p class="m-0">{{ testimonial.profession }}</p>
-                    </div>
+<div class="products-container">
+    {% for product in products %}
+        <div class="product">
+            <!-- Agar video bo'lsa -->
+            {% if product.video %}
+                <div class="product-video">
+                    <video controls>
+                        <source src="{{ product.video.url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
-                <p class="mb-0">{{ testimonial.feedback }}</p>
-                <!-- Tugma qo'shish -->
-                <a href="{% url 'category_detail' %}" class="btn btn-secondary mt-3">izox yozish</a>       </div>
-            {% endfor %}
+            {% endif %}
+
+            <div class="product-details">
+                <h3 class="product-title">{{ product.name }}</h3>
+                <p class="product-description">{{ product.description }}</p>
+                <p class="product-price"><strong>Price:</strong> ${{ product.price }}</p>
+                <!-- Rating Section -->
+                <div class="rating">
+                    <!-- Example stars for rating -->
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="rating-text">({{ product.rating }} ratings)</span>
+                </div>
+                <a href="{% url 'home_page'%}" class="btn-slide">
+                    <i class="fas fa-arrow-right"></i> Ko'roq m
+                </a>
+            </div>
         </div>
-    </div>
+    {% endfor %}
 </div>
-<!-- Testimonial End -->
+
+
+
+<style>
+ /* Container for products */
+.products-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+/* Product item */
+.product {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover effect for products */
+.product:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Video styling */
+.product-video {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.product video {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.product video:hover {
+    transform: scale(1.05); /* Slight zoom effect for video */
+}
+
+/* Product details */
+.product-details {
+    padding: 15px;
+    text-align: center;
+}
+
+.product-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 15px;
+}
+
+.product-description {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.product-price {
+    font-size: 1.2rem;
+    color: #e74c3c;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Button styling (like 'More Details') */
+.product .btn-slide {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.product .btn-slide:hover {
+    color: #0056b3;
+    transform: translateX(5px);
+}
+
+.product .btn-slide i {
+    margin-right: 8px;
+}
+
+/* Rating section */
+.rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.rating .star {
+    font-size: 1.5rem;
+    color: #FFD700; /* Gold color for stars */
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.rating .star:hover {
+    color: #FFA500; /* Darker gold when hovered */
+}
+
+.rating-text {
+    font-size: 0.9rem;
+    margin-left: 10px;
+    color: #666666;
+}
+
+/* Responsive design */
+@media (max-width: 767px) {
+    .product {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .product-title {
+        font-size: 1.1rem;
+    }
+
+    .product-description {
+        font-size: 0.9rem;
+    }
+
+    .product-price {
+        font-size: 1.1rem;
+    }
+
+    .btn-slide {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+
+</style>
+<script>
+    function moveProduct(event) {
+    const product = event.currentTarget;
+    product.style.transform = 'translateY(-100px)';  // Moves the product upwards
+    product.style.opacity = '0';  // Fades it out
+    setTimeout(() => {
+        product.style.display = 'none';  // Hides the product after the transition
+    }, 300);  // Wait until the transition is complete
+}
+
+</script>
+
+
 
 
     {% endblock content %}

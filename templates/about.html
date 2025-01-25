@@ -150,74 +150,35 @@
                 <h1 class="mb-5">Bizning jamolar</h1>
             </div>
             <div class="row g-4">
+                
+                {% for member in team_page %}
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="team-item p-4">
                         <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTabqK036YDZSLo2ecQpSj7-bV_mYEqdCqrYA&s" alt="">
+                            <img class="img-fluid" src="{{ member.image.url }}" alt="{{ member.name }}">
                         </div>
-                        <h5 class="mb-0">Registon gold mebel</h5>
-                        <p>Designation</p>
+                        <h5 class="mb-0">{{ member.name }}</h5>
+                        <p>{{ member.designation }}</p>
                         <div class="btn-slide mt-1">
                             <i class="fa fa-share"></i>
                             <span>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
+                                
+                                {% if member.facebook_url %}
+                                    <a href="{{ member.facebook_url }}"><i class="fab fa-facebook-f"></i></a>
+                                {% endif %}
+                                {% if member.twitter_url %}
+                                    <a href="{{ member.twitter_url }}"><i class="fab fa-twitter"></i></a>
+                                {% endif %}
+                                {% if member.instagram_url %}
+                                    <a href="{{ member.instagram_url }}"><i class="fab fa-instagram"></i></a>
+                                {% endif %}
+
                             </span>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="team-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTabqK036YDZSLo2ecQpSj7-bV_mYEqdCqrYA&s" alt="">
-                        </div>
-                        <h5 class="mb-0">Registon gold mebel</h5>
-                        <p>Designation</p>
-                        <div class="btn-slide mt-1">
-                            <i class="fa fa-share"></i>
-                            <span>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="team-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTabqK036YDZSLo2ecQpSj7-bV_mYEqdCqrYA&s" alt="">
-                        </div>
-                        <h5 class="mb-0">Registon gold mebel</h5>
-                        <p>Designation</p>
-                        <div class="btn-slide mt-1">
-                            <i class="fa fa-share"></i>
-                            <span>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.9s">
-                    <div class="team-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTabqK036YDZSLo2ecQpSj7-bV_mYEqdCqrYA&s" alt="">
-                        </div>
-                        <h5 class="mb-0">Registon gold mebel</h5>
-                        <p>Designation</p>
-                        <div class="btn-slide mt-1">
-                            <i class="fa fa-share"></i>
-                            <span>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
+
             </div>
         </div>
     </div>

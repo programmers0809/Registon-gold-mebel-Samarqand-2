@@ -310,6 +310,202 @@
     </div>
 </div>
 
+<div class="products-container">
+    {% for product in products %}
+        <div class="product">
+            <!-- Agar video bo'lsa -->
+            {% if product.video %}
+                <div class="product-video">
+                    <video controls>
+                        <source src="{{ product.video.url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            {% endif %}
+
+            <div class="product-details">
+                <h3 class="product-title">{{ product.name }}</h3>
+                <p class="product-description">{{ product.description }}</p>
+                <p class="product-price"><strong>Price:</strong> ${{ product.price }}</p>
+                <!-- Rating Section -->
+                <div class="rating">
+                    <!-- Example stars for rating -->
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="rating-text">({{ product.rating }} ratings)</span>
+                </div>
+                <a href="{% url 'home_page'%}" class="btn-slide">
+                    <i class="fas fa-arrow-right"></i> Ko'roq m
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+
+
+<style>
+ /* Container for products */
+.products-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+/* Product item */
+.product {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover effect for products */
+.product:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Video styling */
+.product-video {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.product video {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.product video:hover {
+    transform: scale(1.05); /* Slight zoom effect for video */
+}
+
+/* Product details */
+.product-details {
+    padding: 15px;
+    text-align: center;
+}
+
+.product-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 15px;
+}
+
+.product-description {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.product-price {
+    font-size: 1.2rem;
+    color: #e74c3c;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Button styling (like 'More Details') */
+.product .btn-slide {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.product .btn-slide:hover {
+    color: #0056b3;
+    transform: translateX(5px);
+}
+
+.product .btn-slide i {
+    margin-right: 8px;
+}
+
+/* Rating section */
+.rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.rating .star {
+    font-size: 1.5rem;
+    color: #FFD700; /* Gold color for stars */
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.rating .star:hover {
+    color: #FFA500; /* Darker gold when hovered */
+}
+
+.rating-text {
+    font-size: 0.9rem;
+    margin-left: 10px;
+    color: #666666;
+}
+
+/* Responsive design */
+@media (max-width: 767px) {
+    .product {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .product-title {
+        font-size: 1.1rem;
+    }
+
+    .product-description {
+        font-size: 0.9rem;
+    }
+
+    .product-price {
+        font-size: 1.1rem;
+    }
+
+    .btn-slide {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+
+</style>
+<script>
+    function moveProduct(event) {
+    const product = event.currentTarget;
+    product.style.transform = 'translateY(-100px)';  // Moves the product upwards
+    product.style.opacity = '0';  // Fades it out
+    setTimeout(() => {
+        product.style.display = 'none';  // Hides the product after the transition
+    }, 300);  // Wait until the transition is complete
+}
+
+</script>
+
+
 <!-- Modal for Images -->
 <div id="imageModal" class="modal" tabindex="-1" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-centered">
@@ -459,12 +655,12 @@
             <div class="col-lg-7">
                 <div class="bg-light text-center p-5 wow fadeIn" data-wow-delay="0.5s">
   <!-- index.html -->
-<form method="post">
+  <form method="post">
     {% csrf_token %}
-
-    {{ inquiry_form.as_p }}
+    {{ inquiry_form.as_p }}  <!-- Render the form fields -->
     <button type="submit" class="btn btn-primary">Yuborish</button>
 </form>
+
 <style>
    
     body {
@@ -571,8 +767,9 @@
                                     <a href="{{ member.facebook_url }}"><i class="fab fa-facebook-f"></i></a>
                                 {% endif %}
                                 {% if member.twitter_url %}
-                                    <a href="{{ member.twitter_url }}"><i class="fab fa-twitter"></i></a>
-                                {% endif %}
+                                <a href="{{ member.twitter_url }}"><i class="fab fa-telegram"></i></a>
+                            {% endif %}
+                            
                                 {% if member.instagram_url %}
                                     <a href="{{ member.instagram_url }}"><i class="fab fa-instagram"></i></a>
                                 {% endif %}

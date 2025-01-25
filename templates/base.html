@@ -72,8 +72,9 @@
 
   <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm border-top border-5 border-primary sticky-top p-0">
-    <a href="index.html" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
-        <img src="{% static 'img/logo.jpg' %}" alt="Mebel Logo" class="img-fluid" style="max-height: 50px;">
+    <a href="{% url 'home_page' %}" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
+        <img src="{% static 'img/logo.jpg' %}" alt="Mebel Logo" class="img-fluid" style="max-height: 70px; width: 99px;">
+
     </a>
 
     <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
