@@ -33,13 +33,32 @@ class ContactModelForm(forms.ModelForm):
         }
 
 
-
 class TestimonialForm(forms.ModelForm):
     class Meta:
         model = Testimonial
-        fields = ['client_name', 'profession', 'image', 'feedback']
+        fields = ['client_name', 'profession', 'image', 'feedback', 'rating']
         widgets = {
-            'client_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Mijoz ismini kiriting'}),
-            'profession': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Kasbini kiriting'}),
-            'feedback': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Fikr-mulohaza yozing'}),
+            'client_name': forms.TextInput(attrs={
+                'class': 'form-control', 
+                'placeholder': 'Mijoz ismini kiriting'
+            }),
+            'profession': forms.Select(attrs={
+                'class': 'form-control', 
+                'placeholder': 'Kasbni tanlang'
+            }),
+            'feedback': forms.Textarea(attrs={
+                'class': 'form-control', 
+                'placeholder': 'Fikr-mulohaza yozing', 
+                'rows': 4
+            }),
+            'rating': forms.NumberInput(attrs={
+                'class': 'form-control', 
+                'placeholder': 'Reyting (%) kiriting', 
+                'min': 0, 
+                'max': 100
+            }),
         }
+
+
+
+

@@ -31,13 +31,27 @@ class ServiceModel(models.Model):
 
 
 class Testimonial(models.Model):
+    PROFESSIONS = [
+        ('oquvchi', "O'quvchi"),
+        ('rasom', "Rasom"),
+        ('ishsiz', "Ishsiz"),
+        ('usta', "Usta"),
+        ('musiqa_ustozi', "Musiqa ustozi"),
+    ]
+
     client_name = models.CharField(max_length=100, verbose_name='Mijoz ismi')
-    profession = models.CharField(max_length=100, verbose_name='Kasbi')
+    profession = models.CharField(
+        max_length=100,
+        choices=PROFESSIONS,
+        verbose_name='Kasbi'
+    )
     image = models.ImageField(upload_to='testimonials/', verbose_name='Rasmi')  # MEDIA settings kerak
     feedback = models.TextField(verbose_name='Fikr-mulohaza')
+    rating = models.PositiveIntegerField(verbose_name='Reyting (%)', default=0)  # 0 dan 100 gacha
 
     def __str__(self):
-        return self.client_name
+        return f"{self.client_name} - {dict(self.PROFESSIONS).get(self.profession, 'Noma\'lum kasb')}"
+
 
     class Meta:
         db_table = 'izoxlar'
@@ -109,4 +123,4 @@ class Product(models.Model):
         db_table = 'Maxsulot'  # Table name in the database
         managed = True  # Allows Django to manage the table (migrations)
         verbose_name = 'Team Member'  # Singular form for one member
-        verbose_name_plural = 'Bizning Jamolar'  # Plural form for all team members
+        verbose_name_plural = 'Bizning Maxsulaotlar'  # Plural form for all team members

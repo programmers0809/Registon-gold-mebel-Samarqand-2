@@ -13,6 +13,11 @@ class HomeView(View):
         team_page = TeamMemberModel.objects.all()
         products = Product.objects.all()  # Mahsulotlar
 
+        # Modify testimonials for star ratings
+        for testimonial in testimonials:
+            testimonial.full_stars = range(testimonial.rating // 20)  # To'liq yulduzlar
+            testimonial.empty_stars = range(5 - (testimonial.rating // 20))  # Bo'sh yulduzlar
+
         # Organize data into context
         context = {
             'services_page': services_page,
@@ -25,6 +30,7 @@ class HomeView(View):
 
         # Render the template with the context
         return render(request, 'index.html', context)
+
 
     def post(self, request):
         # Handle form submission
@@ -80,21 +86,29 @@ class ContactView(View):
 
 
     
-    
-    
 class AboutView(View):
     def get(self, request):
-        
+        # Retrieve data from the database
         category_page = CategoryModel.objects.all()
         team_page = TeamMemberModel.objects.all()
-        
-        
+        testimonials = Testimonial.objects.all()
+
+        # Modify testimonials for star ratings
+        for testimonial in testimonials:
+            testimonial.full_stars = range(testimonial.rating // 20)  # To'liq yulduzlar
+            testimonial.empty_stars = range(5 - (testimonial.rating // 20))  # Bo'sh yulduzlar
+
+        # Organize data into context
         context = {
-            'category_page': category_page, 
+            'category_page': category_page,
             'team_page': team_page,
+            'testimonials': testimonials,  # Testimonialni qo'shish
         }
-        
-        return render(request, 'about.html', context=context)
+
+        # Render the template with the context
+        return render(request, 'about.html', context)
+
+
     
 
 class ServiceView(View):
@@ -137,4 +151,5 @@ class CategoryDetailView(View):
     
     
     
-    
+
+

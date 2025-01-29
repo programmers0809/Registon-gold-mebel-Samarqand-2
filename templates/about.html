@@ -142,47 +142,69 @@
     
 
 
-    <!-- Team Start -->
-    <div class="container-xxl py-5">
-        <div class="container py-5">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="text-secondary text-uppercase">biz</h6>
-                <h1 class="mb-5">Bizning jamolar</h1>
-            </div>
-            <div class="row g-4">
-                
-                {% for member in team_page %}
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="{{ member.image.url }}" alt="{{ member.name }}">
-                        </div>
-                        <h5 class="mb-0">{{ member.name }}</h5>
-                        <p>{{ member.designation }}</p>
-                        <div class="btn-slide mt-1">
-                            <i class="fa fa-share"></i>
-                            <span>
-                                
-                                {% if member.facebook_url %}
-                                    <a href="{{ member.facebook_url }}"><i class="fab fa-facebook-f"></i></a>
-                                {% endif %}
-                                {% if member.twitter_url %}
-                                    <a href="{{ member.twitter_url }}"><i class="fab fa-twitter"></i></a>
-                                {% endif %}
-                                {% if member.instagram_url %}
-                                    <a href="{{ member.instagram_url }}"><i class="fab fa-instagram"></i></a>
-                                {% endif %}
+    <!-- Testimonial Start -->
+<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="text-center">
+            <h6 class="text-secondary text-uppercase">Mijozlar</h6>
+            <h1 class="mb-0">Mijozlar izohi</h1>
+        </div>
+        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+            {% for testimonial in testimonials %}
+            <div class="testimonial-item p-4 my-5">
+                <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
+                <div class="d-flex align-items-end mb-4">
+                    <img class="img-fluid flex-shrink-0" 
+                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToK4qEfbnd-RN82wdL2awn_PMviy_pelocqQ&s" 
+                         style="width: 80px; height: 80px; border-radius: 50%;">
+                    <div class="ms-4">
+                        <h5 class="mb-1">{{ testimonial.client_name }}</h5>
+                        <p class="m-0">{{ testimonial.profession }}</p>
+                        <!-- Reytingni ko'rsatish -->
 
-                            </span>
+                        <div class="mt-1">
+                         
+                            <small class="text-warning">
+                                {% for star in testimonial.full_stars %}
+                                <i class="fa fa-star"></i>
+                                {% endfor %}
+                                {% for star in testimonial.empty_stars %}
+                                <i class="fa fa-star text-muted"></i>
+                                {% endfor %}
+                            </small>
+                            
                         </div>
                     </div>
                 </div>
-                {% endfor %}
-
+              
+                <p class="mb-0">{{ testimonial.feedback }}</p>
+                <!-- Tugma qo'shish -->
+                <a href="{% url 'category_detail' %}" class="btn btn-secondary mt-3">Izoh yozish</a>
             </div>
+            {% endfor %}
         </div>
     </div>
-    <!-- Team End -->
+</div>
+
+<style>
+                                
+    text-warning {
+font-size: 18px; /* Yulduzlarning o'lchamini kattalashtirish */
+}
+
+.text-warning .fa-star {
+color: #ffcc00; /* Oltin yulduzlar */
+transition: color 0.3s ease; /* Rang o'zgarishini animatsiya qilish */
+}
+
+.text-warning .fa-star.text-muted {
+color: #d3d3d3; /* Bo'sh yulduzlarning rangi */
+}
+
+.text-warning .fa-star:hover {
+color: #f7b500; /* Hover effekti - yulduz ustiga kelsa rang o'zgaradi */
+}  </style>
+<!-- Testimonial End -->
     {% endblock content %}
 
   

@@ -17,7 +17,11 @@ class CategoryAdmin(admin.ModelAdmin):
 # Testimonial uchun admin klass
 @admin.register(Testimonial)
 class TestimonialAdmin(admin.ModelAdmin):
-    list_display = ('client_name', 'profession')
+    list_display = ('client_name', 'profession', 'rating', 'image')  # Adminda ustunlar ko'rinishi
+    list_filter = ('profession',)  # Filtr bo'limi
+    search_fields = ('client_name', 'feedback')  # Qidiruv oynasi
+    ordering = ('client_name',)  # Tizimlashtirish
+    fields = ('client_name', 'profession', 'image', 'feedback', 'rating')  # Tahrirlash maydonlari
 
 # ContactModel uchun admin klass
 @admin.register(ContactModel)
@@ -41,3 +45,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 # Modelni admin paneliga qo'shish
 admin.site.register(Product, ProductAdmin)
+
+
+
+

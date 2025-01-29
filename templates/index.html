@@ -15,8 +15,9 @@
             <div class="container">
                 <div class="row justify-content-start">
                     <div class="col-md-10 col-lg-8">
-                        <h5 class="text-white text-uppercase mb-3 animated fadeIn">Zamonaviy va Qulay</h5>
-                        <h1 class="display-3 text-white animated fadeIn mb-4">Zamonaviy <span class="text-primary">Mebellar Kolleksiyasi</span></h1>
+                        <h5 class="text-white text-uppercase mb-3" id="animatedText">Zamonaviy va Qulay</h5>
+                         <h1 class="display-3 text-white mb-4" id="animatedText2">Zamonaviy <span class="text-primary">Mebellar Kolleksiyasi</span></h1>
+
                         <p class="fs-5 fw-medium text-white mb-4 pb-2">Uy uchun zamonaviy va qulay divanlarimizni kashf eting.</p>
                         <a href="https://taplink.cc/registon_gold?fbclid=PAZXh0bgNhZW0CMTEAAaYsI46QA8NoRYBhb2bfKI-aAwZXDLUOWmiVlCcH5LUXCmUdj_ippRhLjpo_aem_sfqACKzILvidsPZzn_LJ3Q" class="btn btn-secondary py-md-3 px-md-5 animated fadeIn">Ko'proq Ma'lumot</a>
                     </div>
@@ -26,6 +27,42 @@
     </div>
 </div>
 <!-- Mebel Reklama Bo'limi End -->
+
+<style>
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animated {
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-out;
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
+
+.text-white {
+  color: white;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-primary {
+  color: #007bff; /* Primary color */
+}
+
+</style>  
 
 <style>
 /* Tugmachani hover qilish uchun uslub */
@@ -46,6 +83,11 @@
     object-fit: cover; /* Tasvirni kesmasdan ko'rsatish */
 }
 </style>
+<script>window.onload = function() {
+    document.getElementById("animatedText").classList.add("animated", "fadeIn");
+    document.getElementById("animatedText2").classList.add("animated", "fadeIn");
+  };
+  </script>
 
 
     
@@ -142,131 +184,111 @@
 
 <style>
     /* Xizmatlar bo'limining umumiy stili */
-.container-xxl {
-    background-color: #f9f9f9;
-}
+    .container-xxl {
+        background-color: #f9f9f9;
+    }
 
-.service-item {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.service-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-/* Rasmga stil berish */
-.service-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-.service-item img:hover {
-    transform: scale(1.05);
-}
-
-/* Xizmat sarlavhalarini stilizatsiya qilish */
-.service-item h4 {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #333;
-    margin-top: 15px;
-    text-align: center;
-}
-
-/* Xizmat tavsifining stilizatsiyasi */
-.service-item p {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-/* "Batafsil" tugmasining stili */
-.btn-slide {
-    display: inline-flex;
-    align-items: center;
-    font-size: 1rem;
-    color: #007bff;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-slide:hover {
-    color: #0056b3;
-    transform: translateX(5px);
-}
-
-.btn-slide i {
-    margin-right: 8px;
-}
-
-/* Bo'lim sarlavhalari va matni */
-.text-center h6 {
-    font-size: 1rem;
-    color: #6c757d;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-.text-center h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #343a40;
-    margin-top: 20px;
-    margin-bottom: 30px;
-}
-
-/* Responsive dizayn */
-@media (max-width: 767px) {
     .service-item {
-        margin-bottom: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
     }
 
+    .service-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Chiqirma belgisi */
+    .discount-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #ff4757;
+        color: #fff;
+        font-size: 0.9rem;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        text-transform: uppercase;
+    }
+
+    /* Rasmga stil berish */
+    .service-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+    }
+
+    .service-item img:hover {
+        transform: scale(1.05);
+    }
+
+    /* Xizmat sarlavhalarini stilizatsiya qilish */
     .service-item h4 {
-        font-size: 1.1rem;
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #333;
+        margin-top: 15px;
+        text-align: center;
     }
 
+    /* Xizmat tavsifining stilizatsiyasi */
     .service-item p {
-        font-size: 0.9rem;
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 20px;
+        text-align: center;
     }
 
+    /* "Batafsil" tugmasining stili */
     .btn-slide {
-        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        font-size: 1rem;
+        color: #007bff;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease, transform 0.3s ease;
     }
-}
-/* Rating Section */
-.rating {
-    display: flex;
-    align-items: center;
-}
 
-.rating .star {
-    font-size: 1.5rem;
-    color: #FFD700; /* Gold color for stars */
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
+    .btn-slide:hover {
+        color: #0056b3;
+        transform: translateX(5px);
+    }
 
-.rating .star:hover {
-    color: #FFA500; /* Darker gold when hovered */
-}
+    .btn-slide i {
+        margin-right: 8px;
+    }
 
-.rating-text {
-    font-size: 0.9rem;
-    margin-left: 10px;
-    color: #666666;
-}
+    /* Reyting bo'limi */
+    .rating {
+        display: flex;
+        align-items: center;
+    }
 
+    .rating .star {
+        font-size: 1.5rem;
+        color: #FFD700; /* Oltin rang */
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .rating .star:hover {
+        color: #FFA500; /* Qoramtir oltin rang */
+    }
+
+    .rating-text {
+        font-size: 0.9rem;
+        margin-left: 10px;
+        color: #666666;
+    }
 </style>
 
-<!-- Xizmatlar Boshlanishi -->
 <div class="container-xxl py-5">
     <div class="container py-5">
         <div class="text-center">
@@ -276,9 +298,11 @@
         <div class="row g-4">
 
             {% for service in services_page %}
-
             <div class="col-md-6 col-lg-4">
                 <div class="service-item p-4 shadow-sm rounded">
+                    <!-- Chiqirma belgisi -->
+                    <!-- <div class="discount-badge">Chigirma 50%</div> -->
+
                     <div class="overflow-hidden mb-4">
                         <img 
                             class="img-fluid rounded" 
@@ -290,7 +314,7 @@
                     <h4 class="mb-3 text-primary">{{ service.title }}</h4>
                     <p>{{ service.description }}</p>
                     
-                    <!-- Rating Section -->
+                    <!-- Reyting bo'limi -->
                     <div class="rating mb-3">
                         <span class="star" data-value="5">&#9733;</span>
                         <span class="star" data-value="4">&#9733;</span>
@@ -300,15 +324,16 @@
                         <span class="rating-text">(4.5 O'rtacha Reyting)</span>
                     </div>
 
-                    <a class="btn btn-outline-primary btn-sm mt-2" href=""><i class="fa fa-arrow-right"></i> Ko'proq o'qing</a>
+                    <a class="btn btn-outline-primary btn-sm mt-2" href="
+                    https://taplink.cc/registon_gold?fbclid=PAZXh0bgNhZW0CMTEAAabW4sDia-m5nLvBmvVYCugOgGhLk4fhrF7d94rzTEXPzoqW5h6DHwho3Q8_aem_5gMDHYyDsXoL3TV8SOWuoQ"><i class="fa fa-arrow-right"></i> Ko'proq o'qing</a>
                 </div>
             </div>
-
             {% endfor %}
 
         </div>
     </div>
 </div>
+
 
 <div class="products-container">
     {% for product in products %}
@@ -337,7 +362,7 @@
                     <span class="star">★</span>
                     <span class="rating-text">({{ product.rating }} ratings)</span>
                 </div>
-                <a href="{% url 'home_page'%}" class="btn-slide">
+                <a href="https://taplink.cc/registon_gold?fbclid=PAZXh0bgNhZW0CMTEAAabW4sDia-m5nLvBmvVYCugOgGhLk4fhrF7d94rzTEXPzoqW5h6DHwho3Q8_aem_5gMDHYyDsXoL3TV8SOWuoQ" class="btn-slide">
                     <i class="fas fa-arrow-right"></i> Ko'roq m
                 </a>
             </div>
@@ -791,22 +816,36 @@
     <div class="container py-5">
         <div class="text-center">
             <h6 class="text-secondary text-uppercase">Mijozlar</h6>
-            <h1 class="mb-0">Mijozlar izoxi</h1>
+            <h1 class="mb-0">Mijozlar izohi</h1>
         </div>
         <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
             {% for testimonial in testimonials %}
             <div class="testimonial-item p-4 my-5">
                 <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
                 <div class="d-flex align-items-end mb-4">
-                    <img class="img-fluid flex-shrink-0" src="{{ testimonial.image.url }}" style="width: 80px; height: 80px;">
+                    <img class="img-fluid flex-shrink-0" 
+                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToK4qEfbnd-RN82wdL2awn_PMviy_pelocqQ&s" 
+                         style="width: 80px; height: 80px; border-radius: 50%;">
                     <div class="ms-4">
                         <h5 class="mb-1">{{ testimonial.client_name }}</h5>
                         <p class="m-0">{{ testimonial.profession }}</p>
+                        <!-- Reytingni ko'rsatish -->
+
+                        <div class="mt-1 testimonial-stars">
+                            <small>
+                                {% for star in testimonial.full_stars %}
+                                <i class="fa fa-star"></i>
+                                {% endfor %}
+                                {% for star in testimonial.empty_stars %}
+                                <i class="fa fa-star text-muted"></i>
+                                {% endfor %}
+                            </small>
+                        </div>
                     </div>
                 </div>
                 <p class="mb-0">{{ testimonial.feedback }}</p>
                 <!-- Tugma qo'shish -->
-                <a href="{% url 'category_detail' %}" class="btn btn-secondary mt-3">izox yozish</a>
+                <a href="{% url 'category_detail' %}" class="btn btn-secondary mt-3">Izoh yozish</a>
             </div>
             {% endfor %}
         </div>
@@ -814,9 +853,45 @@
 </div>
 <!-- Testimonial End -->
 
+
+
  <!-- commment  -->
 
- 
+ <style>
+    .testimonial-stars .fa-star {
+    font-size: 18px; /* Yulduzlarning o'lchamini kattalashtirish */
+}
+
+.testimonial-stars .fa-star {
+    color: #ffcc00; /* Oltin yulduzlar */
+    transition: color 0.3s ease; /* Rang o'zgarishini animatsiya qilish */
+}
+
+.testimonial-stars .fa-star.text-muted {
+    color: #d3d3d3; /* Bo'sh yulduzlarning rangi */
+}
+
+.testimonial-stars .fa-star:hover {
+    color: #f7b500; /* Hover effekti - yulduz ustiga kelsa rang o'zgaradi */
+}
+
+                                
+    text-warning {
+font-size: 18px; /* Yulduzlarning o'lchamini kattalashtirish */
+}
+
+.text-warning .fa-star {
+color: #ffcc00; /* Oltin yulduzlar */
+transition: color 0.3s ease; /* Rang o'zgarishini animatsiya qilish */
+}
+
+.text-warning .fa-star.text-muted {
+color: #d3d3d3; /* Bo'sh yulduzlarning rangi */
+}
+
+.text-warning .fa-star:hover {
+color: #f7b500; /* Hover effekti - yulduz ustiga kelsa rang o'zgaradi */
+}  </style>
 <!-- comment  -->
 
     {% endblock content %}
