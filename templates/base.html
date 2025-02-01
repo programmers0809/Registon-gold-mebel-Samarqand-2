@@ -105,9 +105,46 @@
             <a href="{% url "contact_page" %}" class="nav-item nav-link">Bog'lanish</a>
             <a href="" class="nav-item nav-link"></a>
         </div>
-        <h4 class="m-0 pe-lg-5 d-none d-lg-block">
-            <i class="fa fa-phone text-primary me-3"></i>+998 90 605 65 66
-        </h4>
+        <div class="phone-container">
+            <h4 class="m-0 pe-lg-5 d-none d-lg-block animated-phone">
+                <i class="fa fa-phone text-primary me-3"></i>+998 90 605 65 66
+            </h4>
+           
+        </div>
+        
+        
+        <style>
+            @keyframes vibrate {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  50% { transform: translateX(2px); }
+  75% { transform: translateX(-2px); }
+  100% { transform: translateX(0); }
+}
+
+.animated-phone i {
+  display: inline-block;
+  animation: vibrate 0.3s infinite;
+}
+.animated-phone i:hover {
+  animation: vibrate 0.3s infinite;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animated-phone {
+  animation: fadeIn 1.5s ease-out;
+}
+
+        </style>
     </div>
 </nav>
 <!-- Navbar End -->
