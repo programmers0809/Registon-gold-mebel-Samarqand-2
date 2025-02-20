@@ -33,18 +33,17 @@ class ContactModelForm(forms.ModelForm):
         }
 
 
+from django import forms
+from .models import Testimonial
+
 class TestimonialForm(forms.ModelForm):
     class Meta:
         model = Testimonial
-        fields = ['client_name', 'profession', 'image', 'feedback', 'rating']
+        fields = ['client_name', 'image', 'feedback', 'rating']  # profession olib tashlandi
         widgets = {
             'client_name': forms.TextInput(attrs={
                 'class': 'form-control', 
                 'placeholder': 'Mijoz ismini kiriting'
-            }),
-            'profession': forms.Select(attrs={
-                'class': 'form-control', 
-                'placeholder': 'Kasbni tanlang'
             }),
             'feedback': forms.Textarea(attrs={
                 'class': 'form-control', 

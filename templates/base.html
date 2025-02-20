@@ -11,8 +11,6 @@
 
     <!-- Favicon -->
     <link href="{% static 'img/logo.jpg' %}" rel="icon">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,14 +69,11 @@
 }
 </style>
 
-<style>
-    
-</style>
+
   <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm border-top border-5 border-primary sticky-top p-0">
-    <a href="{% url 'home_page' %}" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
-        <img src="{% static 'img/logo.jpg' %}" alt="Mebel Logo" class="img-fluid" style="max-height: 70px; width: 99px;">
-
+    <a href="index.html" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
+        <img src="{% static 'img/logo.jpg' %}" alt="Mebel Logo" class="img-fluid" style="max-height: 50px;">
     </a>
 
     <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -103,48 +98,11 @@
                 </div>
             </div>
             <a href="{% url "contact_page" %}" class="nav-item nav-link">Bog'lanish</a>
-            <a href="" class="nav-item nav-link"></a>
+            <a href="" class="nav-item nav-link">loyiha</a>
         </div>
-        <div class="phone-container">
-            <h4 class="m-0 pe-lg-5 d-none d-lg-block animated-phone">
-                <i class="fa fa-phone text-primary me-3"></i>+998 90 605 65 66
-            </h4>
-           
-        </div>
-        
-        
-        <style>
-            @keyframes vibrate {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-2px); }
-  50% { transform: translateX(2px); }
-  75% { transform: translateX(-2px); }
-  100% { transform: translateX(0); }
-}
-
-.animated-phone i {
-  display: inline-block;
-  animation: vibrate 0.3s infinite;
-}
-.animated-phone i:hover {
-  animation: vibrate 0.3s infinite;
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animated-phone {
-  animation: fadeIn 1.5s ease-out;
-}
-
-        </style>
+        <h4 class="m-0 pe-lg-5 d-none d-lg-block">
+            <i class="fa fa-phone text-primary me-3"></i>+998 90 605 65 66
+        </h4>
     </div>
 </nav>
 <!-- Navbar End -->
@@ -192,21 +150,15 @@
             </div>
             
             <div class="col-lg-3 col-md-6">
-                <h4 class="text-light mb-4">
-                    <i class="fas fa-question-circle me-2"></i> Yordam Xizmati
-                </h4>
-                
-                <p>bizga yozing biz javob beramiz</h2>
+                <h4 class="text-light mb-4">Bizning maqsadimiz – mijozlarimiz uchun </h4>
+                <p>Oshxona mebellarini onlayn buyurtma qiling!</h2>
                     <p class="mb-4">
-                        
-                        Registon gold mebel Samarqand
+                        Hozirda oshxona mebellarini 
+                      
                     </p></p>
                 <div class="position-relative mx-auto" style="max-width: 400px;">
                   
-                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2" onclick="window.location.href='https://taplink.cc/registon_gold?fbclid=PAZXh0bgNhZW0CMTEAAabW4sDia-m5nLvBmvVYCugOgGhLk4fhrF7d94rzTEXPzoqW5h6DHwho3Q8_aem_5gMDHYyDsXoL3TV8SOWuoQ'">
-                        boshlash
-                    </button>
-                    
+                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">boshlash</button>
                 </div>
             </div>
         </div>

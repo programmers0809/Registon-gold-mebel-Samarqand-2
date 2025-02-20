@@ -5,83 +5,64 @@ from .models import ServiceModel, CategoryModel, Testimonial, TeamMemberModel,Pr
 from .forms import ContactModelForm, TestimonialForm
 class HomeView(View):
     def get(self, request):
-        # Retrieve data from the database
-        services_page = ServiceModel.objects.all()
-        category_page = CategoryModel.objects.all()
-        testimonials = Testimonial.objects.all()
-        inquiry_form = ContactModelForm()  # Blank form for GET request
-        team_page = TeamMemberModel.objects.all()
-        products = Product.objects.all()  # Mahsulotlar
-
-        # Modify testimonials for star ratings
-        for testimonial in testimonials:
-            testimonial.full_stars = range(testimonial.rating // 20)  # To'liq yulduzlar
-            testimonial.empty_stars = range(5 - (testimonial.rating // 20))  # Bo'sh yulduzlar
-
-        # Organize data into context
+        """ GET so‘rovi uchun sahifani ma'lumotlar bilan yuklash """
         context = {
-            'services_page': services_page,
-            'category_page': category_page,
-            'testimonials': testimonials,
-            'inquiry_form': inquiry_form,
-            'team_page': team_page,
-            'products': products,  # Mahsulotlarni contextga qo'shish
+            'services_page': ServiceModel.objects.all(),
+            'category_page': CategoryModel.objects.all(),
+            'testimonials': self.get_testimonials_with_stars(),
+            'inquiry_form': ContactModelForm(),
+            'team_page': TeamMemberModel.objects.all(),
+            'products': Product.objects.all(),
         }
-
-        # Render the template with the context
         return render(request, 'index.html', context)
 
-
     def post(self, request):
-        # Handle form submission
+        """ POST so‘rovi orqali formani qayta ishlash """
         inquiry_form = ContactModelForm(request.POST)
-        
+
         if inquiry_form.is_valid():
-            # Process the data, e.g., save it to the database, send an email, etc.
-            inquiry_form.save()  # Assuming the form saves the data to the database
-            
-            # Redirect or render a success page after processing the form
-            return redirect('home_page')  # You can replace 'success_url' with your desired redirect URL
-        else:
-            # If the form is invalid, re-render the page with error messages
-            services_page = ServiceModel.objects.all()
-            category_page = CategoryModel.objects.all()
-            testimonials = Testimonial.objects.all()
-            team_page = TeamMemberModel.objects.all()
+            inquiry_form.save()
+            return redirect('home_page')  # Muvaffaqiyatli qo‘shilganidan keyin qayta yo‘naltirish
+        
+        # Form xatolar bilan qaytariladi
+        context = {
+            'services_page': ServiceModel.objects.all(),
+            'category_page': CategoryModel.objects.all(),
+            'testimonials': self.get_testimonials_with_stars(),
+            'inquiry_form': inquiry_form,
+            'team_page': TeamMemberModel.objects.all(),
+            'products': Product.objects.all(),
+        }
+        return render(request, 'index.html', context)
 
-            # Pass the form with errors in the context
-            context = {
-                'services_page': services_page,
-                'category_page': category_page,
-                'testimonials': testimonials,
-                'inquiry_form': inquiry_form,
-                'team_page': team_page,
-            }
-
-            return render(request, 'index.html', context)
-
+    def get_testimonials_with_stars(self):
+        """ Izohlarga yulduzcha reytingini qo‘shib beradi """
+        testimonials = Testimonial.objects.all()
+        for testimonial in testimonials:
+            testimonial.full_stars = range(testimonial.rating // 20)  # To‘liq yulduzlar
+            testimonial.empty_stars = range(5 - (testimonial.rating // 20))  # Bo‘sh yulduzlar
+        return testimonials
 
 class ContactView(View):
     def get(self, request):
-      
-        form = ContactModelForm() 
+        form = ContactModelForm()
         category_page = CategoryModel.objects.all()
-        
-        
+
         context = {
             'form': form,
-            'category_page': category_page, 
+            'category_page': category_page,
         }
-        return render(request, 'contact.html', context=context)
+        return render(request, 'contact.html', context)
 
     def post(self, request):
-    
-        inquiry_form = ContactModelForm(request.POST) 
-        if inquiry_form.is_valid(): 
-            inquiry_form.save()  #
-            return redirect('home_page')  
-     
-        return render(request, 'contact.html', {'form': inquiry_form})
+        form = ContactModelForm(request.POST)
+        category_page = CategoryModel.objects.all()  # Kategoriya ma'lumotlarini qo'shish
+
+        if form.is_valid():
+            form.save()
+            return redirect('home_page')
+
+        return render(request, 'contact.html', {'form': form, 'category_page': category_page})
 
 
 

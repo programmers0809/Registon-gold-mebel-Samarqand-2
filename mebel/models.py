@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class CategoryModel(models.Model):
@@ -31,33 +32,28 @@ class ServiceModel(models.Model):
 
 
 class Testimonial(models.Model):
-    PROFESSIONS = [
-        ('oquvchi', "O'quvchi"),
-        ('rasom', "Rasom"),
-        ('ishsiz', "Ishsiz"),
-        ('usta', "Usta"),
-        ('musiqa_ustozi', "Musiqa ustozi"),
-    ]
-
     client_name = models.CharField(max_length=100, verbose_name='Mijoz ismi')
-    profession = models.CharField(
-        max_length=100,
-        choices=PROFESSIONS,
-        verbose_name='Kasbi'
+    image = models.ImageField(
+        upload_to='testimonials/', 
+        verbose_name='Rasmi', 
+        default='testimonials/default.jpg'
     )
-    image = models.ImageField(upload_to='testimonials/', verbose_name='Rasmi')  # MEDIA settings kerak
     feedback = models.TextField(verbose_name='Fikr-mulohaza')
-    rating = models.PositiveIntegerField(verbose_name='Reyting (%)', default=0)  # 0 dan 100 gacha
+    rating = models.PositiveIntegerField(
+        verbose_name='Reyting (%)', 
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)]
+    )
 
     def __str__(self):
-        return f"{self.client_name} - {dict(self.PROFESSIONS).get(self.profession, 'Noma\'lum kasb')}"
-
+        return self.client_name
 
     class Meta:
         db_table = 'izoxlar'
         managed = True
         verbose_name = 'Izoh'
         verbose_name_plural = 'Izohlar'
+        ordering = ['-rating']  # Eng yuqori reytingga ega sharhlar birinchi chiqadi
 
 
 class ContactModel(models.Model):
